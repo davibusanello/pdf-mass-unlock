@@ -1,0 +1,42 @@
+# General
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyc.pytest_cache/
+.cache/
+.cache/*
+.pytest_cache/
+
+# Virtual environments
+.venv/
+env/
+venv/
+ENV/
+
+# Poetry
+/poetry.lock
+/.venv
+
+# IDEs and editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+*.bak
+*.tmp
+*.sublime*
+*.iml
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+
+# Test artifacts
+htmlcov/
+.coverage
+.coverage.*
+.nox/
+coverage.xml
+junit.xml

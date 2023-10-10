@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "pdf-mass-unlock"
+version = "0.0.1"
+description = "PDF Recursive Password remover"
+authors = ["Davi Busanello <itsme@davibusanello.net>"]
+license = "GPLv3"
+readme = "README.md"
+packages = [{include = "pdf_mass_unlock"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+coloredlogs = "^15.0.1"
+lxml = ">=4.8"
+pikepdf = {path = "pikepdf-7.2.0-pp39-pypy39_pp73-macosx_10_9_x86_64.whl"}
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.3.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
