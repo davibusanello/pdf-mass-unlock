@@ -1,22 +1,65 @@
-[tool.poetry]
+[project]
 name = "pdf-mass-unlock"
-version = "0.0.1"
+version = "0.1.0"
 description = "PDF Recursive Password remover"
-authors = ["Davi Busanello <itsme@davibusanello.net>"]
-license = "GPLv3"
 readme = "README.md"
-packages = [{include = "pdf_mass_unlock"}]
+requires-python = ">=3.13"
+license = {text = "GPL-3.0-only"}
+authors = [
+    { name = "Davi Busanello", email = "itsme@davibusanello.net" }
+]
+dependencies = [
+    "pikepdf>=9.11.0",
+    "rich>=14.2.0",
+    "typer>=0.19.2",
+]
+[dependencies]
+pikepdf = ">=9.11.0"
+typer = ">=0.19.2"
+rich = ">=14.2.0"
 
-[tool.poetry.dependencies]
-python = "^3.10"
-coloredlogs = "^15.0.1"
-lxml = ">=4.8"
-pikepdf = {path = "pikepdf-7.2.0-pp39-pypy39_pp73-macosx_10_9_x86_64.whl"}
+[project.scripts]
+pdf-mass-unlock = "pdf_mass_unlock.cli:app"
 
+[dependency-groups]
+dev = [
+    "pytest>=8",
+    "pytest-cov",
+    "ruff>=0.6",
+    "mypy",
+    "hypothesis",
+    "pre-commit"
+]
 
-[tool.poetry.group.dev.dependencies]
-pytest = "^7.3.1"
+[tool.uv]
+package = true
 
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+[tool.pytest.ini_options]
+addopts = "-q --strict-markers --cov=pdf_mass_unlock --cov-report=term-missing"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+
+[tool.ruff]
+line-length = 100
+indent-width = 4
+
+[tool.ruff.lint]
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "C",  # flake8-comprehensions
+    "B",  # flake8-bugbear
+]
+ignore = []
+
+[tool.ruff.lint.per-file-ignores]
+"src/pdf_mass_unlock/cli.py" = ["B008"]  # Allow typer.Option in argument defaults
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "auto"

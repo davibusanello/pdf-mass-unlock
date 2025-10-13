@@ -14,9 +14,34 @@ env/
 venv/
 ENV/
 
+# uv (managed automatically by uv in user's global cache)
+# Note: uv doesn't typically create project-specific cache directories
+
+# Pip
+/pip-log.txt
+/pip-delete-this-directory.txt
+*.egg-info/
+.eggs/
+
 # Poetry
 /poetry.lock
 /.venv
+
+# Pipenv
+/Pipfile.lock
+/.venv
+
+# Conda
+ environment.yml
+ environment.yaml
+ .conda/
+
+# Build and distribution artifacts
+build/
+dist/
+*.egg
+*.egg-info/
+*.dist-info/
 
 # IDEs and editors
 .vscode/
@@ -40,3 +65,8 @@ htmlcov/
 .nox/
 coverage.xml
 junit.xml
+
+# Development artifacts
+.tox/
+.pytest_cache/
+.hypothesis/
