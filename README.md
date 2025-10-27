@@ -1,5 +1,8 @@
 # PDF Mass Unlock
 
+[![CI](https://github.com/davibusanello/pdf-mass-unlock/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/davibusanello/pdf-mass-unlock/actions/workflows/ci.yml?query=branch:main)
+[![codecov](https://codecov.io/github/davibusanello/pdf-mass-unlock/graph/badge.svg?token=PKEJ9SBMDV)](https://codecov.io/github/davibusanello/pdf-mass-unlock)
+
 PDF Mass Unlock is a safe, cross-platform CLI tool to recursively find PDFs, attempt password removal using supplied credentials, and save decrypted files while keeping reliable backups.
 
 ## Features
