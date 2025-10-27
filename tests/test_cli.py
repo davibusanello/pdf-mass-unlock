@@ -4,6 +4,8 @@ from unittest.mock import MagicMock, patch
 
 import pikepdf
 import typer
+from typer.testing import CliRunner
+
 from pdf_mass_unlock.cli import (
     _log_input_details,
     app,
@@ -11,7 +13,6 @@ from pdf_mass_unlock.cli import (
     process_pdfs,
     version_callback,
 )
-from typer.testing import CliRunner
 
 
 def test_version_callback():

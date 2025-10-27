@@ -3,6 +3,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 import pikepdf
+
 from pdf_mass_unlock.unlocker import (
     UnlockResult,
     UnlockStatus,

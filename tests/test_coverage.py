@@ -5,6 +5,7 @@ from pathlib import Path
 from unittest.mock import MagicMock, patch
 
 import pikepdf
+
 from pdf_mass_unlock.cli import (
     _log_input_details,
     find_and_validate_pdfs,
