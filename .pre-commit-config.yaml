@@ -1,3 +1,4 @@
+---
 repos:
   - repo: local
     hooks:
@@ -5,13 +6,24 @@ repos:
         name: ruff
         entry: uv run ruff check --fix --exit-non-zero-on-fix
         language: system
-        types_or: [ python, pyi ]
+        types_or: [python, pyi]
         require_serial: true
-        files: \.py$
+        files: \\.py$
       - id: ruff-format
         name: ruff-format
         entry: uv run ruff format
         language: system
-        types_or: [ python, pyi ]
+        types_or: [python, pyi]
         require_serial: true
-        files: \.py$
+        files: \\.py$
+      - id: mdformat
+        name: mdformat
+        entry: uv run mdformat
+        language: system
+        types: [markdown]
+        args: [--number]
+      - id: yamllint
+        name: yamllint
+        entry: uv run yamllint --strict
+        language: system
+        types: [yaml]

@@ -1,0 +1,22 @@
+---
+extends: default
+rules:
+  line-length: disable
+  truthy: disable
+
+ignore: |
+  .git/
+  __pycache__/
+  .pytest_cache/
+  .ruff_cache/
+  .venv/
+  .uv/
+  .tox/
+  dist/
+  build/
+  *.egg-info/
+  .DS_Store
+  .coverage
+  coverage.xml
+  htmlcov/
+  tmp/

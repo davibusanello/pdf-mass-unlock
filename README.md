@@ -2,8 +2,15 @@
 
 [![CI](https://github.com/davibusanello/pdf-mass-unlock/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/davibusanello/pdf-mass-unlock/actions/workflows/ci.yml?query=branch:main)
 [![codecov](https://codecov.io/github/davibusanello/pdf-mass-unlock/graph/badge.svg?token=PKEJ9SBMDV)](https://codecov.io/github/davibusanello/pdf-mass-unlock)
+[![Python](https://img.shields.io/badge/python-3.13+-blue.svg)](https://www.python.org/downloads/)
+[![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
+[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+[![pytest](https://img.shields.io/badge/pytest-8+-red.svg)](https://docs.pytest.org/en/stable/)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-PDF Mass Unlock is a safe, cross-platform CLI tool to recursively find PDFs, attempt password removal using supplied credentials, and save decrypted files while keeping reliable backups.
+PDF Mass Unlock is a safe, cross-platform CLI tool to recursively find PDFs,
+attempt password removal using supplied credentials, and save decrypted files
+while keeping reliable backups.
 
 ## Features
 
@@ -21,6 +28,7 @@ PDF Mass Unlock is a safe, cross-platform CLI tool to recursively find PDFs, att
 ## Installation
 
 ### For Development (Current)
+
 ```bash
 # Install dependencies using uv (recommended)
 uv sync --group dev
@@ -30,6 +38,7 @@ uv run pdf-mass-unlock --help
 ```
 
 ### For General Use (Future)
+
 ```bash
 # After publishing to PyPI (future)
 pip install pdf-mass-unlock
@@ -56,6 +65,7 @@ uv run pdf-mass-unlock --path /path/to/search --dictionary /path/to/dictionary.t
 ```
 
 The dictionary file should contain one password per line:
+
 ```
 password1
 password2
@@ -78,9 +88,11 @@ uv run pdf-mass-unlock --path /path --password "secret" --backup-dir-name backup
 
 - `--path PATH`: Root directory to scan for PDFs (required)
 - `--password TEXT`: Single password to try for unlocking PDFs
-- `--dictionary FILE`: Path to dictionary file with passwords (one per line) [default: dictionary.txt]
+- `--dictionary FILE`: Path to dictionary file with passwords (one per line)
+  [default: dictionary.txt]
 - `--try-empty`: Also try an empty password
-- `--backup-dir-name TEXT`: Name of sibling backup directories created alongside PDFs [default: pdf_with_password]
+- `--backup-dir-name TEXT`: Name of sibling backup directories created alongside
+  PDFs [default: pdf_with_password]
 - `--dry-run`: Do not modify files; only report planned actions
 - `--summary`: Print a final summary table
 - `--log-level TEXT`: Logging level (INFO, WARN, DEBUG) [default: INFO]
@@ -90,20 +102,24 @@ uv run pdf-mass-unlock --path /path --password "secret" --backup-dir-name backup
 ## Safety Features
 
 - **Backups**: Creates a backup of each PDF before attempting to unlock it
-- **Atomic Writes**: Uses temporary files and atomic replacement to prevent corruption
+- **Atomic Writes**: Uses temporary files and atomic replacement to prevent
+  corruption
 - **Secret Protection**: Passwords are never logged or printed to console
-- **Error Handling**: Comprehensive exception handling with user-friendly messages
+- **Error Handling**: Comprehensive exception handling with user-friendly
+  messages
 
 ## Security Notes
 
 - This tool does not crack passwords or bypass security by force
 - It only attempts to unlock PDFs using provided credentials
-- Decrypted PDFs and backups may contain sensitive information - handle with care
+- Decrypted PDFs and backups may contain sensitive information - handle with
+  care
 - Passwords should be managed securely and not stored in plain text if possible
 
 ## Development
 
-This project uses `uv` for dependency management and follows modern Python practices (Python 3.13, TDD).
+This project uses `uv` for dependency management and follows modern Python
+practices (Python 3.13, TDD).
 
 To set up the development environment:
 

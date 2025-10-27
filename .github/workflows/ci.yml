@@ -1,47 +1,56 @@
+---
 name: CI
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [main, develop]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   test:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    - name: Install uv
-      uses: astral-sh/setup-uv@v3
-      with:
-        enable-cache: true
-        cache-dependency-glob: "uv.lock"
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
 
-    - name: Set up Python
-      run: |
-        uv python install 3.13
+      - name: Set up Python
+        run: |
+          uv python install 3.13
 
-    - name: Install dependencies
-      run: |
-        uv sync --all-extras
+      - name: Install dependencies
+        run: |
+          uv sync --all-extras
 
-    - name: Run linting with ruff
-      run: |
-        uv run ruff check .
+      - name: Run markdown linting with mdformat
+        run: |
+          uv run mdformat --check .
 
-    - name: Format check with ruff
-      run: |
-        uv run ruff format --check .
+      - name: Run YAML linting with yamllint
+        run: |
+          uv run yamllint --strict .
 
-    - name: Run tests with pytest
-      run: |
-        uv run pytest --cov=pdf_mass_unlock --cov-report=xml
+      - name: Run linting with ruff
+        run: |
+          uv run ruff check .
 
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v4
-      with:
-        file: ./coverage.xml
-        fail_ci_if_error: true
-        token: ${{ secrets.CODECOV_TOKEN }}
+      - name: Format check with ruff
+        run: |
+          uv run ruff format --check .
+
+      - name: Run tests with pytest
+        run: |
+          uv run pytest --cov=pdf_mass_unlock --cov-report=xml
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          file: ./coverage.xml
+          fail_ci_if_error: true
+          token: ${{ secrets.CODECOV_TOKEN }}
